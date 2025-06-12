@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Resultados para {{ ciudad }}</title>
+    <link rel="stylesheet" href="/static/style.css">
+</head>
+<body>
+    <h1 class="result-title">Resultados para "{{ ciudad }}"</h1>
+    {% if resultados %}
+        <table class="result-table">
+            <tr>
+                <th>Nombre</th>
+                <th>Código País</th>
+                <th>Distrito</th>
+                <th>Población</th>
+            </tr>
+            {% for r in resultados %}
+            <tr>
+                <td>{{ r.Name }}</td>
+                <td>{{ r.CountryCode }}</td>
+                <td>{{ r.District }}</td>
+                <td>{{ r.Population }}</td>
+            </tr>
+            {% endfor %}
+        </table>
+    {% else %}
+        <p>No se encontraron ciudades que coincidan.</p>
+    {% endif %}
+    <p><a href="/" class="back-link">Volver a buscar</a></p>
+</body>
+</html>

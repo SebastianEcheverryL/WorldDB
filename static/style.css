@@ -1,5 +1,5 @@
 body {
-    background: linear-gradient(120deg, #f4f6f8 60%, #e0e7ef 100%);
+    background: linear-gradient(120deg, #79b8f8 60%, #04d3fd 100%);
     font-family: 'Segoe UI', Arial, sans-serif;
     margin: 0;
     padding: 0;
@@ -8,15 +8,22 @@ body {
 h1 {
     text-align: center;
     color: #2c3e50;
-    margin-bottom: 30px;
+    margin-bottom: 10px;
     font-size: 2rem;
     letter-spacing: 1px;
 }
 
+h2 {
+    text-align: center;
+    color: #2c3e50;
+    margin-top: 10 px;
+    font-size: 1.5rem;
+    font-weight: normal;
+}
 form {
     background: #fff;
     max-width: 500px;
-    margin: 60px auto 0 auto;
+    margin: 20px auto 0 auto;
     padding: 30px 20px;
     border-radius: 18px;
     box-shadow: 0 4px 24px rgba(0,0,0,0.10);
@@ -67,6 +74,8 @@ button:hover {
     border-radius: 12px;
     overflow: hidden;
     font-size: 1rem;
+    overflow-x: auto;
+    display: block;
 }
 
 .result-table th, .result-table td {
@@ -121,4 +130,45 @@ button:hover {
 
 .back-link:hover {
     text-decoration: underline;
+}
+
+.header {
+    display: flex;
+    align-items: center;
+    background: #000000;
+    color: #fff;
+    padding: 12px 24px;
+    font-size: 1.2rem;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.04);
+}
+.logo {
+    height: 36px;
+    margin-right: 12px;
+}
+.brand {
+    font-weight: bold;
+    letter-spacing: 1px;
+}
+.footer {
+    text-align: center;
+    padding: 16px 0;
+    background: #f4f6f8;
+    color: #888;
+    margin-top: 40px;
+    font-size: 0.95rem;
+}
+
+@media (max-width: 600px) {
+    .container, form, .result-table {
+        max-width: 98vw;
+        padding: 10px 2vw;
+        font-size: 0.95rem;
+    }
+    .result-table th, .result-table td {
+        padding: 8px 4px;
+        font-size: 0.95rem;
+    }
+    h1, .main-title, .result-title {
+        font-size: 1.2rem;
+    }
 }

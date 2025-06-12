@@ -1,16 +1,63 @@
 <!DOCTYPE html>
 <html>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<html lang="es">
 <head>
-    <title>Buscar País</title>
+    <link rel="icon" href="/static/favicon.ico">
+    <title>Buscar País | WorldDB</title>
     <link rel="stylesheet" href="/static/style.css">
+    <!-- JQVMap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/jqvmap@1.5.1/dist/jqvmap.min.css" rel="stylesheet" />
 </head>
 <body>
+    <header class="header">
+        <img src="/static/logo.png" alt="WorldDB Logo" class="logo">
+        <span class="brand">WorldDB</span>
+    </header>
     <div class="container">
-        <h1 class="main-title">Buscar información de un país</h1>
+        <h1 class="main-title">Consulta de Países y Ciudades</h1>
+        <h2 class="section-title">Buscar información de un país</h2>
         <form id="search-form" class="search-form" action="/buscar" method="post">
             <input type="text" id="country-input" name="pais" placeholder="Ejemplo: Colombia" required>
             <button type="submit" id="search-btn">Buscar</button>
         </form>
+        <h2 class="section-title">Buscar información de una ciudad</h2>
+        <form id="city-form" class="search-form" action="/buscar_ciudad" method="post">
+            <input type="text" id="city-input" name="ciudad" placeholder="Ejemplo: Bogotá" required>
+            <button type="submit" id="city-btn">Buscar</button>
+        </form>
+        <h2 class="section-title">Selecciona un país en el mapa</h2>
+        <div id="vmap" style="width: 100%; max-width: 600px; height: 400px; margin: 0 auto 30px auto;"></div>
     </div>
+    <footer class="footer">
+        <p>&copy; 2025 WorldDB | Hecho por tu nombre</p>
+    </footer>
+
+    <!-- JQVMap JS y mapa mundial -->
+    <script src="https://cdn.jsdelivr.net/npm/jquery@3.7.1/dist/jquery.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/jqvmap@1.5.1/dist/jquery.vmap.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/jqvmap@1.5.1/dist/maps/jquery.vmap.world.js"></script>
+    <script>
+    $(function(){
+        $('#vmap').vectorMap({
+            map: 'world_en',
+            backgroundColor: '#e0e7ef',
+            borderColor: '#818181',
+            borderOpacity: 0.25,
+            borderWidth: 1,
+            color: '#f4f6f8',
+            enableZoom: true,
+            hoverColor: '#007bff',
+            selectedColor: '#0056b3',
+            showTooltip: true,
+            onRegionClick: function(element, code, country){
+                // Redirige al endpoint de búsqueda usando el nombre del país
+                // Puedes cambiar esto para usar el código si lo prefieres
+                window.location.href = "/buscar?pais=" + encodeURIComponent(country);
+            }
+        });
+    });
+    </script>
 </body>
 </html>
