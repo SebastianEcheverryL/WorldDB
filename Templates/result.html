@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Resultados para {{ pais }}</title>
+    <link rel="stylesheet" href="/static/style.css">
+</head>
+<body>
+    <h1 class="result-title">Resultados para "{{ pais }}"</h1>
+
+    {% if resultados %}
+        <table class="result-table">
+            <tr>
+                <th>Nombre</th>
+                <th>Continente</th>
+                <th>Región</th>
+                <th>Población</th>
+                <th>Esperanza de vida</th>
+            </tr>
+            {% for r in resultados %}
+            <tr>
+                <td>{{ r.Name }}</td>
+                <td>{{ r.Continent }}</td>
+                <td>{{ r.Region }}</td>
+                <td>{{ r.Population }}</td>
+                <td>{{ r.LifeExpectancy }}</td>
+            </tr>
+            {% endfor %}
+        </table>
+    {% else %}
+        <p>No se encontraron países que coincidan.</p>
+    {% endif %}
+
+    <p><a href="/" class="back-link">Volver a buscar</a></p>
+</body>
+</html>
+<!-- This HTML template displays the results of a country search. It shows a table with the country's name, continent, region, population, and life expectancy. If no results are found, it displays a message indicating that no countries matched the search criteria. -->
+<!-- The template also includes a link to return to the search page. -->

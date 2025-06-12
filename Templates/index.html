@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Buscar País</title>
+    <link rel="stylesheet" href="/static/style.css">
+</head>
+<body>
+    <div class="container">
+        <h1 class="main-title">Buscar información de un país</h1>
+        <form id="search-form" class="search-form" action="/buscar" method="post">
+            <input type="text" id="country-input" name="pais" placeholder="Ejemplo: Colombia" required>
+            <button type="submit" id="search-btn">Buscar</button>
+        </form>
+    </div>
+</body>
+</html>
