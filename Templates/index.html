@@ -12,8 +12,10 @@
 </head>
 <body>
     <header class="header">
-        <img src="/static/logo.png" alt="WorldDB Logo" class="logo">
-        <span class="brand">WorldDB</span>
+        <a href="/" class="logo-link">
+            <img src="/static/logo.png" alt="WorldDB Logo" class="logo">
+            <span class="brand">WorldDB</span>
+        </a>
     </header>
     <div class="container">
         <h1 class="main-title">Consulta de Países y Ciudades</h1>
@@ -31,7 +33,7 @@
         <div id="vmap" style="width: 100%; max-width: 600px; height: 400px; margin: 0 auto 30px auto;"></div>
     </div>
     <footer class="footer">
-        <p>&copy; 2025 WorldDB | Hecho por tu nombre</p>
+        <p>&copy; 2025 WorldDB | Made By Sebastian Echeverry</p>
     </footer>
 
     <!-- JQVMap JS y mapa mundial -->
@@ -42,14 +44,14 @@
     $(function(){
         $('#vmap').vectorMap({
             map: 'world_en',
-            backgroundColor: '#e0e7ef',
-            borderColor: '#818181',
-            borderOpacity: 0.25,
+            backgroundColor: '#f4f6f8', // Fondo claro
+            color: '#b3c6e0',           // Color base de los países
+            hoverColor: '#007bff',      // Color al pasar el mouse
+            selectedColor: '#0056b3',   // Color al seleccionar
+            borderColor: '#fff',        // Bordes blancos
+            borderOpacity: 0.5,
             borderWidth: 1,
-            color: '#f4f6f8',
             enableZoom: true,
-            hoverColor: '#007bff',
-            selectedColor: '#0056b3',
             showTooltip: true,
             onRegionClick: function(element, code, country){
                 // Redirige al endpoint de búsqueda usando el nombre del país

@@ -7,6 +7,12 @@
     <link rel="stylesheet" href="/static/style.css">
 </head>
 <body>
+    <header class="header">
+        <a href="/" class="logo-link">
+            <img src="/static/logo.png" alt="WorldDB Logo" class="logo">
+            <span class="brand">WorldDB</span>
+        </a>
+    </header>
     <h1 class="result-title">Resultados para "{{ ciudad }}"</h1>
     {% if resultados %}
         <table class="result-table">
@@ -21,7 +27,7 @@
                 <td>{{ r.Name }}</td>
                 <td>{{ r.CountryCode }}</td>
                 <td>{{ r.District }}</td>
-                <td>{{ r.Population }}</td>
+                <td>{{ "{:,}".format(r.Population).replace(",", ".") }}</td>
             </tr>
             {% endfor %}
         </table>

@@ -1,39 +1,188 @@
 <!DOCTYPE html>
-<html>
 <html lang="es">
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
 <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Resultados para {{ pais }}</title>
     <link rel="stylesheet" href="/static/style.css">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chartjs-plugin-datalabels"></script>
 </head>
 <body>
+    <header class="header">
+        <a href="/" class="logo-link">
+            <img src="/static/logo.png" alt="WorldDB Logo" class="logo">
+        </a>
+        <span class="brand">WorldDB</span>
+    </header>
     <h1 class="result-title">Resultados para "{{ pais }}"</h1>
 
-    {% if resultados %}
-        <table class="result-table">
-            <tr>
-                <th>Nombre</th>
-                <th>Continente</th>
-                <th>Región</th>
-                <th>Población</th>
-                <th>Esperanza de vida</th>
-            </tr>
-            {% for r in resultados %}
-            <tr>
-                <td>{{ r.Name }}</td>
-                <td>{{ r.Continent }}</td>
-                <td>{{ r.Region }}</td>
-                <td>{{ r.Population }}</td>
-                <td>{{ r.LifeExpectancy }}</td>
-            </tr>
-            {% endfor %}
-        </table>
-    {% else %}
-        <p>No se encontraron países que coincidan.</p>
+    {% if resultados and resultados|length > 0 %}
+    <table class="result-table">
+        <tr>
+            <th>Nombre</th>
+            <th>Continente</th>
+            <th>Región</th>
+            <th>Población</th>
+            <th>Esperanza de vida</th>
+        </tr>
+        {% for r in resultados %}
+        <tr>
+            <td>{{ r.Name }}</td>
+            <td>{{ r.Continent }}</td>
+            <td>{{ r.Region }}</td>
+            <td>{{ "{:,}".format(r.Population).replace(",", ".") }}</td>
+            <td>{{ r.LifeExpectancy }}</td>
+        </tr>
+        {% endfor %}
+    </table>
     {% endif %}
 
+
+    <div class="charts-container" style="max-width:600px;margin:40px auto;">
+        <canvas id="populationChart"></canvas>
+        <canvas id="lifeChart" style="margin-top:40px;"></canvas>
+    </div>
+   {% if resultados %}
+    <div id="chart-data"
+         data-pais="{{ resultados[0]['Name'] }}"
+         data-poblacion="{{ resultados[0]['Population'] }}"
+         data-esperanza="{{ resultados[0]['LifeExpectancy'] }}"
+         data-avg-pop="{{ avg_pop }}"
+         data-avg-life="{{ avg_life }}">
+    </div>
+    <script>
+    const dataDiv = document.getElementById('chart-data');
+    const pais = dataDiv.getAttribute('data-pais');
+    const poblacion = parseInt(dataDiv.getAttribute('data-poblacion'));
+    const esperanza = parseFloat(dataDiv.getAttribute('data-esperanza'));
+    const avgPop = parseInt(dataDiv.getAttribute('data-avg-pop'));
+    const avgLife = parseFloat(dataDiv.getAttribute('data-avg-life'));
+
+    // Gráfico de población
+    new Chart(document.getElementById('populationChart'), {
+        type: 'bar',
+        data: {
+            labels: [pais, 'Promedio mundial'],
+            datasets: [{
+                label: 'Población',
+                data: [poblacion, avgPop],
+                backgroundColor: ['#007bff', '#6c757d'],
+                borderColor: ['#0056b3', '#888'],
+                borderRadius: 10,
+                borderWidth: 2
+            }]
+        },
+        plugins: [ChartDataLabels],
+        options: {
+            responsive: true,
+            plugins: {
+                title: { display: true, text: 'Población comparada', font: { size: 20 }, color: '#333' },
+                legend: { display: false },
+                datalabels: {
+                    color: '#222',
+                    anchor: 'end',
+                    align: 'top',
+                    font: { weight: 'bold', size: 14 },
+                    formatter: function(value) {
+                        return value.toLocaleString('es-CO');
+                    },
+                    backgroundColor:'transparent',
+                    borderColor: '#ccc',
+                    borderRadius: 4,
+                    padding: {top: 1, bottom: 10, left: 10, right: 10}
+                }
+            },
+            scales: {
+                y: {
+                    beginAtZero: true,
+                    grid: { color: "#e0e7ef" },
+                    ticks: {
+                        color: "#2c3e50",
+                        font: { size: 14 },
+                        callback: function(value) {
+                            return value.toLocaleString('es-CO');
+                        }
+                    }
+                },
+                x: {
+                    grid: { display: false },
+                    ticks: { color: "#2c3e50", font: { size: 14 } }
+                }
+            },
+            animation: {
+                duration: 1200,
+                easing: 'easeOutBounce'
+            }
+        }
+    });
+
+    // Gráfico de esperanza de vida
+    new Chart(document.getElementById('lifeChart'), {
+        type: 'bar',
+        data: {
+            labels: [pais, 'Promedio mundial'],
+            datasets: [{
+                label: 'Esperanza de vida',
+                data: [esperanza, avgLife],
+                backgroundColor: ['#28a745', '#6c757d'],
+                borderColor: ['#218838', '#888'],
+                borderRadius: 10,
+                borderWidth: 2
+            }]
+        },
+        plugins: [ChartDataLabels],
+        options: {
+            responsive: true,
+            plugins: {
+                title: { display: true, text: 'Esperanza de Vida', font: { size: 20 }, color: '#2c3e50' },
+                legend: { display: false },
+                datalabels: {
+                    color: '#222',
+                    anchor: 'end',
+                    align: 'top',
+                    font: { weight: 'bold', size: 14 },
+                    formatter: function(value) {
+                        return value.toLocaleString('es-CO');
+                    },
+                    backgroundColor: 'transparent',
+                    borderRadius: 4,
+                    padding: 4
+                }
+            },
+            scales: {
+                y: {
+                    beginAtZero: true,
+                    grid: { color: "#e0e7ef" },
+                    ticks: {
+                        color: "#2c3e50",
+                        font: { size: 14 },
+                        callback: function(value) {
+                            return value.toLocaleString('es-CO');
+                        }
+                    }
+                },
+                x: {
+                    grid: { display: false },
+                    ticks: { color: "#2c3e50", font: { size: 14 } }
+                }
+            },
+            animation: {
+                duration: 1200,
+                easing: 'easeOutBounce'
+            }
+        }
+    });
+</script>
+{% else %}
+    <p>No se encontraron resultados.</p>
+{% endif %}
+
     <p><a href="/" class="back-link">Volver a buscar</a></p>
+    <footer class="footer">
+        <p>&copy; 2025 WorldDB | Made By Sebastian Echeverry</p>
+    </footer>
+    
 </body>
 </html>
 <!-- This HTML template displays the results of a country search. It shows a table with the country's name, continent, region, population, and life expectancy. If no results are found, it displays a message indicating that no countries matched the search criteria. -->

@@ -25,23 +25,29 @@ def buscar_get(request: Request, pais: str = Query(...)):
         """
         cursor.execute(query, ('%' + pais + '%',))
         resultados = cursor.fetchall()
+
+        # Calcula promedios globales ANTES de cerrar el cursor
+        cursor.execute("SELECT AVG(Population) as avg_pop, AVG(LifeExpectancy) as avg_life FROM country")
+        promedios = cursor.fetchone()
+
         cursor.close()
         conn.close()
+
         return templates.TemplateResponse("result.html", {
             "request": request,
             "resultados": resultados,
-            "pais": pais
+            "pais": pais,
+            "avg_pop": int(promedios["avg_pop"]) if promedios["avg_pop"] else 0,
+            "avg_life": float(promedios["avg_life"]) if promedios["avg_life"] else 0,
         })
     except Exception as e:
         return templates.TemplateResponse("error.html", {"request": request, "error": str(e)})
 
 @app.post("/buscar", response_class=HTMLResponse)
 def buscar(request: Request, pais: str = Form(...)):
-
     try:
         conn = get_connection()
         cursor = conn.cursor(dictionary=True)
-
         query = """
             SELECT Name, Continent, Region, Population, LifeExpectancy
             FROM country
@@ -49,12 +55,20 @@ def buscar(request: Request, pais: str = Form(...)):
         """
         cursor.execute(query, ('%' + pais + '%',))
         resultados = cursor.fetchall()
+
+        # Calcula promedios globales ANTES de cerrar el cursor
+        cursor.execute("SELECT AVG(Population) as avg_pop, AVG(LifeExpectancy) as avg_life FROM country")
+        promedios = cursor.fetchone()
+
         cursor.close()
         conn.close()
+
         return templates.TemplateResponse("result.html", {
             "request": request,
             "resultados": resultados,
-            "pais": pais
+            "pais": pais,
+            "avg_pop": int(promedios["avg_pop"]) if promedios["avg_pop"] else 0,
+            "avg_life": float(promedios["avg_life"]) if promedios["avg_life"] else 0,
         })
     except Exception as e:
         return templates.TemplateResponse("error.html", {"request": request, "error": str(e)})

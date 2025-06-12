@@ -1,5 +1,5 @@
 body {
-    background: linear-gradient(120deg, #79b8f8 60%, #04d3fd 100%);
+    background: linear-gradient(120deg, #63ffdb 60%, #00ffee 100%);
     font-family: 'Segoe UI', Arial, sans-serif;
     margin: 0;
     padding: 0;
@@ -121,22 +121,34 @@ button:hover {
 .back-link {
     display: block;
     text-align: center;
-    margin: 30px auto 0 auto;
-    color: #007bff;
+    margin: 24px 100px 0 100px;
+    background: linear-gradient(90deg, #01000098 60%, #05213f61 100%);
+    color: #fff;
+    font-size: 1rem;
+    font-weight: 500;
+    border: none;
+    border-radius: 8px;
+    padding: 10px 28px;
+    box-shadow: 0 2px 8px rgba(0,123,255,0.10);
     text-decoration: none;
-    font-weight: bold;
-    font-size: 1.1rem;
+    transition: background 0.2s, transform 0.2s;
+    cursor: pointer;
+    content: center;
+
 }
 
 .back-link:hover {
-    text-decoration: underline;
+    background: linear-gradient(90deg, #0056b3 60%, #007bff 100%);
+    transform: translateY(-2px) scale(1.04);
+    text-decoration: none;
 }
 
 .header {
     display: flex;
     align-items: center;
-    background: #000000;
-    color: #fff;
+    background:linear-gradient(90deg, #fffeff 60%, #007bff 100%);
+    border-radius: 0 0 8px 8px;
+    color: #000000;
     padding: 12px 24px;
     font-size: 1.2rem;
     box-shadow: 0 2px 8px rgba(0,0,0,0.04);
@@ -147,7 +159,15 @@ button:hover {
 }
 .brand {
     font-weight: bold;
+    font-family: 'Segoe UI', Arial, sans-serif;
     letter-spacing: 1px;
+    color: black;
+    font-size: 1.2rem;
+    flex-shrink: 0;
+    flex-basis: 150px;
+    text-decoration: none;
+    display: flex;
+    flex-grow: 1;
 }
 .footer {
     text-align: center;
@@ -158,6 +178,29 @@ button:hover {
     font-size: 0.95rem;
 }
 
+.charts-container {
+    background: #fff;
+    border-radius: 18px;
+    box-shadow: 0 4px 24px rgba(0,0,0,0.10);
+    padding: 24px 16px;
+    margin-bottom: 40px;
+
+}
+
+#vmap {
+    border-radius: 18px;
+    box-shadow: 0 4px 24px rgba(0,0,0,0.10);
+    background: #fff;
+    padding: 16px;
+    margin-bottom: 32px;
+}
+
+.logo-link {
+    display: flex;
+    align-items: center;
+    text-decoration: none;
+    color: #ffffff;
+}
 @media (max-width: 600px) {
     .container, form, .result-table {
         max-width: 98vw;
@@ -170,5 +213,26 @@ button:hover {
     }
     h1, .main-title, .result-title {
         font-size: 1.2rem;
+    }
+    .charts-container {
+        background-color: #fff;
+        border-radius: 18px;
+        box-shadow: 0 4px 24px rgba(0,0,0,0.10);
+        margin: 20px auto;
+        padding: 16px 2vw;
+        max-width: 98vw;
+        display: flex;
+        flex-direction: column;
+    }
+    canvas {
+        max-width: 98vw !important;
+        height: 220px !important;
+    }
+}
+@media (max-width: 700px) {
+    #vmap {
+        width: 98vw !important;
+        height: 220px !important;
+        padding: 4px;
     }
 }
