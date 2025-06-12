@@ -15,22 +15,24 @@
     </header>
     <h1 class="result-title">Resultados para "{{ ciudad }}"</h1>
     {% if resultados %}
-        <table class="result-table">
-            <tr>
-                <th>Nombre</th>
-                <th>Código País</th>
-                <th>Distrito</th>
-                <th>Población</th>
-            </tr>
-            {% for r in resultados %}
-            <tr>
-                <td>{{ r.Name }}</td>
-                <td>{{ r.CountryCode }}</td>
-                <td>{{ r.District }}</td>
-                <td>{{ "{:,}".format(r.Population).replace(",", ".") }}</td>
-            </tr>
-            {% endfor %}
-        </table>
+        <div class="table-container">
+            <table class="result-table">
+                <tr>
+                    <th>Nombre</th>
+                    <th>Código País</th>
+                    <th>Distrito</th>
+                    <th>Población</th>
+                </tr>
+                {% for r in resultados %}
+                <tr>
+                    <td>{{ r.Name }}</td>
+                    <td>{{ r.CountryCode }}</td>
+                    <td>{{ r.District }}</td>
+                    <td>{{ "{:,}".format(r.Population).replace(",", ".") }}</td>
+                </tr>
+                {% endfor %}
+            </table>
+        </div>
     {% else %}
         <p>No se encontraron ciudades que coincidan.</p>
     {% endif %}

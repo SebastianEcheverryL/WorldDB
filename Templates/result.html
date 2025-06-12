@@ -18,24 +18,26 @@
     <h1 class="result-title">Resultados para "{{ pais }}"</h1>
 
     {% if resultados and resultados|length > 0 %}
-    <table class="result-table">
-        <tr>
-            <th>Nombre</th>
-            <th>Continente</th>
-            <th>Región</th>
-            <th>Población</th>
-            <th>Esperanza de vida</th>
-        </tr>
-        {% for r in resultados %}
-        <tr>
-            <td>{{ r.Name }}</td>
-            <td>{{ r.Continent }}</td>
-            <td>{{ r.Region }}</td>
-            <td>{{ "{:,}".format(r.Population).replace(",", ".") }}</td>
-            <td>{{ r.LifeExpectancy }}</td>
-        </tr>
-        {% endfor %}
-    </table>
+    <div class="table-container">
+        <table class="result-table">
+            <tr>
+                <th>Nombre</th>
+                <th>Continente</th>
+                <th>Región</th>
+                <th>Población</th>
+                <th>Esperanza de vida</th>
+            </tr>
+            {% for r in resultados %}
+            <tr>
+                <td>{{ r.Name }}</td>
+                <td>{{ r.Continent }}</td>
+                <td>{{ r.Region }}</td>
+                <td>{{ "{:,}".format(r.Population).replace(",", ".") }}</td>
+                <td>{{ r.LifeExpectancy }}</td>
+            </tr>
+            {% endfor %}
+        </table>
+    </div>
     {% endif %}
 
 

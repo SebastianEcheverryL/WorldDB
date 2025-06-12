@@ -64,52 +64,40 @@ button:hover {
     transform: translateY(-2px) scale(1.03);
 }
 
-.result-table {
-    width: 90%;
-    margin: 30px auto;
-    border-collapse: separate;      /* Permite separación entre celdas */
-    border-spacing: 0;              /* Elimina espacio extra */
+.table-container {
+    max-width: 700px;
+    margin: 32px auto 24px auto;
     background: #fff;
+    border-radius: 14px;
     box-shadow: 0 4px 24px rgba(0,0,0,0.08);
-    border-radius: 12px;
+    padding: 24px 18px;
+}
+
+.result-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 20px;
+    border-radius: 8px;
     overflow: hidden;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.04);
     font-size: 1rem;
-    overflow-x: auto;
-    display: block;
+    background: #fff;
 }
 
 .result-table th, .result-table td {
-    padding: 14px 18px;             /* Más espacio horizontal */
+    padding: 10px 14px;
     text-align: center;
-    border-bottom: 1px solid #e0e7ef; /* Línea separadora entre filas */
+    border-bottom: 1px solid #e0e7ef;
 }
 
 .result-table th {
-    background: linear-gradient(90deg, #007bff 60%, #0056b3 100%);
-    color: #fff;
-    font-weight: bold;
-    font-size: 1.1rem;
-    letter-spacing: 1px;
-    border-right: 1px solid #e0e7ef; /* Línea separadora entre columnas */
-}
-
-.result-table th:last-child,
-.result-table td:last-child {
-    border-right: none;             /* Quita la línea del último */
-}
-
-.result-table tr:nth-child(even) {
     background: #f4f6f8;
+    color: #007bff;
+    font-weight: 600;
 }
 
-.result-table tr:hover {
-    background: #e0e7ef;
-    transition: background 0.2s;
-}
-
-.result-table td {
-    color: #2c3e50;
-    border-right: 1px solid #e0e7ef; /* Línea separadora entre columnas */
+.result-table tr:last-child td {
+    border-bottom: none;
 }
 
 .result-title {
@@ -187,6 +175,13 @@ button:hover {
 
 }
 
+.charts-container, .table-container {
+    transition: box-shadow 0.2s;
+}
+.charts-container:hover, .table-container:hover {
+    box-shadow: 0 8px 32px rgba(0,0,0,0.14);
+}
+
 #vmap {
     border-radius: 18px;
     box-shadow: 0 4px 24px rgba(0,0,0,0.10);
@@ -234,5 +229,12 @@ button:hover {
         width: 98vw !important;
         height: 220px !important;
         padding: 4px;
+    }
+    .table-container {
+        padding: 8px 2vw;
+    }
+    .result-table th, .result-table td {
+        padding: 7px 4px;
+        font-size: 0.98rem;
     }
 }
