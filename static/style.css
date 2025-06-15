@@ -1,13 +1,13 @@
 body {
-    background: linear-gradient(120deg, #63ffdb 60%, #00ffee 100%);
+    background-color:rgb(4, 0, 83) ;
     font-family: 'Segoe UI', Arial, sans-serif;
     margin: 0;
-    padding: 0;
+    padding: inherit;
 }
 
 h1 {
     text-align: center;
-    color: #2c3e50;
+    color: #b1d8ff;
     margin-bottom: 10px;
     font-size: 2rem;
     letter-spacing: 1px;
@@ -15,15 +15,16 @@ h1 {
 
 h2 {
     text-align: center;
-    color: #2c3e50;
-    margin-top: 10 px;
+    color: #abd5ff;
+    margin-top: 10px;
+    margin-bottom: 10px;
     font-size: 1.5rem;
     font-weight: normal;
 }
 form {
     background: #fff;
     max-width: 500px;
-    margin: 20px auto 0 auto;
+    margin: 20px auto 20px auto;
     padding: 30px 20px;
     border-radius: 18px;
     box-shadow: 0 4px 24px rgba(0,0,0,0.10);
@@ -64,6 +65,57 @@ button:hover {
     transform: translateY(-2px) scale(1.03);
 }
 
+#main-content{
+    min-height: 100vh;
+    position: relative;
+}
+
+#background-video {
+    top: 60px;
+    left: 0;
+    bottom: 40px;
+    width: 100vw;
+    height:  158vh;
+    position: absolute;
+    object-fit: cover;
+    z-index: 1;
+    opacity: 0.8;
+    background: linear-gradient(90deg, #01000098 60%, #05213f61 100%);
+    filter: brightness(0.5);
+    pointer-events: none;
+    transition: opacity 0.3s ease-in-out;
+    will-change: opacity;
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+
+}
+
+.overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.5);
+    z-index: 9999;
+    opacity: 0.5;
+    mix-blend-mode: overlay;
+}  
+
+.container {
+    background-attachment: fixed;
+    position: relative;
+    z-index: 2;
+    padding: 20px;
+    color: #fff;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
 .table-container {
     max-width: 700px;
     margin: 32px auto 24px auto;
@@ -197,6 +249,68 @@ button:hover {
     color: #ffffff;
 }
 @media (max-width: 600px) {
+    body {
+        font-size: 0.9rem;
+    }
+    h1 {
+        font-size: 1.5rem;
+    }
+    h2 {
+        font-size: 1.2rem;
+    }
+    form {
+        max-width: 90vw;
+        padding: 20px 10px;
+    }
+    input[type="text"] {
+        font-size: 1rem;
+        padding: 10px;
+    }
+    button {
+        font-size: 1rem;
+        padding: 10px;
+    }
+    .header {
+        padding: 10px 16px;
+        font-size: 1rem;
+    }
+    .logo {
+        height: 30px;
+        margin-right: 8px;
+    }
+    .brand {
+        font-size: 1rem;
+        flex-basis: 120px;
+    }
+    .footer {
+        font-size: 0.85rem;
+        padding: 12px 0;
+    }
+    .back-link {
+        margin: 16px 20px;
+        padding: 8px 20px;
+        font-size: 0.9rem;
+    }
+    .container {
+        padding: 10px 5vw;
+    }
+    .result-table {
+        font-size: 0.9rem;
+    }
+    .result-table th, .result-table td {
+        padding: 6px 3px;
+    }
+    .charts-container {
+        padding: 16px 10px;
+    }
+    .backgraund-video {
+        top: auto;
+        left: 0;
+        bottom: 50px;
+        width: 100%;
+        height: 20%;
+        position: inherit;
+    }
     .container, form, .result-table {
         max-width: 98vw;
         padding: 10px 2vw;
@@ -223,8 +337,6 @@ button:hover {
         max-width: 98vw !important;
         height: 220px !important;
     }
-}
-@media (max-width: 700px) {
     #vmap {
         width: 98vw !important;
         height: 220px !important;
