@@ -1,0 +1,30 @@
+{% extends "base.html" %}
+
+{% block title %}Contacto | WorldDB{% endblock %}
+
+{% block content %}
+
+<div class="container" style="max-width: 800px;">
+  <h2 class="mb-4 text-center">Contáctanos</h2>
+  {% if mensaje_exito %}
+    <div class="alert alert-success text-center">{{ mensaje_exito }}</div>
+  {% endif %}
+  <form class="about-form" method="post" action="/contact">
+    <div class="mb-3">
+      <label for="nombre" class="form-label" style="color: darkblue">Nombre</label>
+      <input type="text" class="form-control" id="nombre" name="nombre" required>
+    </div>
+    <div class="mb-3">
+      <label for="email" class="form-label" style="color: darkblue" >Correo electrónico</label>
+      <input type="email" class="form-control" id="email" name="email" required>
+    </div>
+    <div class="mb-3">
+      <label for="mensaje" class="form-label" style="color:darkblue">Mensaje</label>
+      <textarea class="form-control" id="mensaje" name="mensaje" rows="5" required></textarea>
+    </div>
+    <div class="d-grid">
+      <button type="submit" class="btn btn-primary">Enviar mensaje</button>
+    </div>
+  </form>
+</div>
+{% endblock %}

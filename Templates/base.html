@@ -23,22 +23,22 @@
         <div class="collapse navbar-collapse" id="navbarNav">
             <ul class="navbar-nav ms-auto">
                 <li class="nav-item">
-                    <a class="nav-link active" aria-current="page" href="/">
+                    <a class="nav-link {% if actual_page == 'inicio' %}active{% endif %}" aria-current="page" href="/">
                         <i class="fas fa-home me-1"></i> Inicio
                     </a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="/ciudades">
-                        <i class="fas fa-city me-1"></i> Ciudades
-                    </a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="/paises">
+                    <a class="nav-link {% if actual_page == 'paises' %}active{% endif %}" href="/paises">
                         <i class="fas fa-flag me-1"></i> Países
                     </a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link btn btn-outline-light btn-sm ms-lg-3 px-3 rounded-pill" href="/contacto">
+                    <a class="nav-link {% if actual_page == 'ciudades' %}active{% endif %}" href="/ciudades">
+                        <i class="fas fa-city me-1"></i> Ciudades
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link btn btn-outline-light btn-sm ms-lg-3 px-3 rounded-pill{% if actual_page == 'contact' %}active{% endif %}" href="/contact">
                         <i class="fas fa-envelope me-1"></i> Contacto
                     </a>
                 </li>
@@ -46,7 +46,12 @@
         </div>
     </div>
 </header>
-
+<div class="shooting-star"></div>
+<div class="shooting-star"></div>
+<div class="shooting-star"></div>
+<div class="shooting-star"></div>
+<div class="shooting-star"></div>
+<div class="stars"></div>
   <!-- CONTENIDO PRINCIPAL -->
   <main class="container">
     {% block content %}{% endblock %}
