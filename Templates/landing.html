@@ -1,0 +1,79 @@
+{% extends "base.html" %}
+
+{% block title %}WorldDB - Explora el Mundo{% endblock %}
+
+{% block head %}
+  <meta name="description" content="WorldDB: Explora países, ciudades y datos del mundo de forma interactiva.">
+  <style>
+    .hero-section {
+      color: #fff;
+      padding: 6rem 1rem 4rem 1rem;
+      text-align: center;
+      background: rgba(30,60,114,0.7);
+      border-radius: 1.5rem;
+      margin-top: 3rem;
+      box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.37);
+    }
+    .feature-icon {
+      font-size: 2.5rem;
+      color: #0d6efd;
+      margin-bottom: 1rem;
+    }
+    .features-section {
+      margin-top: 4rem;
+      margin-bottom: 4rem;
+    }
+    .cta-btn {
+      font-size: 1.3rem;
+      padding: 0.75rem 2.5rem;
+      border-radius: 2rem;
+      box-shadow: 0 4px 12px rgba(13,110,253,0.2);
+      transition: background 0.2s;
+    }
+    .cta-btn:hover {
+      background: #0b5ed7;
+    }
+  </style>
+{% endblock %}
+
+{% block content %}
+    <div class="shooting-star"></div>
+    <div class="shooting-star"></div>
+    <div class="shooting-star"></div>
+    <div class="shooting-star"></div>
+    <div class="shooting-star"></div>
+    <div class="container">
+    <!-- Hero Section -->
+    <section class="hero-section mx-auto">
+      <h1 class="display-4 fw-bold mb-3">🌎 WorldDB</h1>
+      <p class="lead mb-4">Explora países, ciudades y datos del mundo de forma interactiva y visual.<br>
+      Descubre información, compara regiones y aprende más sobre nuestro planeta.</p>
+      <a href="/index" class="btn btn-primary cta-btn mt-2">Comenzar</a>
+    </section>
+    <div class="stars"></div>
+    <!-- Features Section -->
+    <section class="features-section row text-center">
+      <div class="col-md-4 mb-4">
+        <div class="feature-icon mb-2">
+          <i class="bi bi-globe2"></i>
+        </div>
+        <h5 class="fw-bold">Datos Globales</h5>
+        <p>Consulta información actualizada de todos los países y ciudades del mundo.</p>
+      </div>
+      <div class="col-md-4 mb-4">
+        <div class="feature-icon mb-2">
+          <i class="bi bi-bar-chart-line"></i>
+        </div>
+        <h5 class="fw-bold">Comparaciones Visuales</h5>
+        <p>Compara regiones, economías y poblaciones con gráficos interactivos.</p>
+      </div>
+      <div class="col-md-4 mb-4">
+        <div class="feature-icon mb-2">
+          <i class="bi bi-lightbulb"></i>
+        </div>
+        <h5 class="fw-bold">Aprende y Descubre</h5>
+        <p>Explora curiosidades y datos interesantes sobre nuestro planeta.</p>
+      </div>
+    </section>
+  </div>
+{% endblock %}

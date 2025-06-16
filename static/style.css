@@ -210,6 +210,9 @@ button:hover {
     border-radius: 14px;
     box-shadow: 0 4px 24px rgba(0,0,0,0.08);
     padding: 24px 18px;
+    /* Añadido para hacer la tabla scrollable horizontalmente en pantallas pequeñas */
+    overflow-x: auto;
+    z-index: 2; /* Permite desplazamiento horizontal si el contenido es demasiado ancho */
 }
 
 .result-table {
@@ -217,22 +220,38 @@ button:hover {
     border-collapse: collapse;
     margin-top: 20px;
     border-radius: 8px;
-    overflow: hidden;
+    /* La propiedad overflow: hidden en la tabla misma puede cortar el contenido
+       Si no estás usando bordes redondeados en las celdas, puedes quitarla o moverla al .table-container
+       Para bordes redondeados en la tabla, déjala, pero asegúrate de que el padding es suficiente. */
+    overflow: hidden; /* Mantiene los bordes redondeados */
     box-shadow: 0 2px 8px rgba(0,0,0,0.04);
     font-size: 1rem;
     background: #fff;
+    /* Aseguramos un min-width para que la tabla no se "aplasté" demasiado */
+    min-width: 500px;
+    z-index: 3; /* Ajusta según sea necesario, para evitar que se comprima demasiado */
 }
 
 .result-table th, .result-table td {
-    padding: 10px 14px;
+    padding: 12px 14px; /* Aumenta ligeramente el padding para dar más espacio al texto */
     text-align: center;
     border-bottom: 1px solid #e0e7ef;
+    white-space: nowrap; /* Evita que el texto se rompa en varias líneas, importante para las cabeceras */
+    /* Añadir line-height si el texto sigue cortándose verticalmente */
+    line-height: 1.2;
+    color: #333; /* Color de texto más oscuro para mejor contraste */
+    font-size: 1rem; /* Tamaño de fuente más grande para mejor legibilidad */
+    transition: background 0.2s, color 0.2s; /* Añadido para suavizar el cambio de color al pasar el ratón */
+    z-index: 3; /* Asegura que las celdas estén por encima del fondo */
 }
 
 .result-table th {
     background: #f4f6f8;
-    color: #007bff;
+    color: #007bff; /* Asegúrate que este color sea legible sobre #f4f6f8 */
     font-weight: 600;
+    font-size: 1.05rem; /* Un poco más grande para las cabeceras */
+    text-transform: uppercase;
+    z-index: 3; /* Opcional: para un aspecto más formal de las cabeceras */
 }
 
 .result-table tr:last-child td {
@@ -309,6 +328,11 @@ button:hover {
 }
 
 .charts-container, .table-container {
+    display: auto;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    
     transition: box-shadow 0.2s;
 }
 .charts-container:hover, .table-container:hover {
@@ -329,6 +353,29 @@ button:hover {
     text-decoration: none;
     color: #ffffff;
 }
+#table-responsive {
+  overflow-x: auto;
+}
+
+@media (max-width: 768px) {
+  table, thead, tbody, th, td, tr {
+    display: block;
+    width: 100%;
+  }
+  th, td {
+    box-sizing: border-box;
+    width: 100%;
+    padding: 0.75rem 0.5rem;
+  }
+  thead {
+    display: none;
+  }
+  tr {
+    margin-bottom: 1rem;
+    border-bottom: 2px solid #eee;
+  }
+}
+
 @media (max-width: 600px) {
     body {
         font-size: 0.9rem;
