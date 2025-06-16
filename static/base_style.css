@@ -1,0 +1,104 @@
+ /* Estilos para el fondo y la sombra */
+    .custom-navbar {
+        background: linear-gradient(to right, #275382, #0056b3); /* Degradado de azul a azul más oscuro */
+        color: white; /* Texto blanco por defecto */
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Sombra más pronunciada */
+        transition: all 0.3s ease-in-out; /* Transición suave para cualquier cambio */
+    }
+
+    /* Estilo para los enlaces de navegación */
+    .custom-navbar .nav-link {
+        color: rgba(255, 255, 255, 0.85); /* Un blanco ligeramente transparente para los enlaces */
+        font-weight: 500; /* Ligeramente más negrita */
+        padding: 0.6rem 1rem; /* Ajuste del padding para mayor comodidad */
+        position: relative; /* Para el efecto de subrayado */
+        overflow: hidden; /* Oculta parte del underline */
+    }
+
+    /* Efecto de subrayado al pasar el ratón */
+    .custom-navbar .nav-link::after {
+        content: '';
+        position: absolute;
+        width: 0;
+        height: 2px;
+        bottom: 0;
+        left: 50%;
+        background-color: #ffc107; /* Color de acento para el subrayado (amarillo) */
+        transition: width 0.3s ease-in-out, left 0.3s ease-in-out;
+    }
+
+    .custom-navbar .nav-link:hover::after,
+    .custom-navbar .nav-link.active::after {
+        width: 100%;
+        left: 0;
+    }
+
+    /* Color al pasar el ratón y para el enlace activo */
+    .custom-navbar .nav-link:hover,
+    .custom-navbar .nav-link.active {
+        color: #ffffff; /* Blanco puro al pasar el ratón o si está activo */
+    }
+
+    /* Estilo del botón de contacto */
+    .custom-navbar .btn-outline-light {
+        border-color: rgba(255, 255, 255, 0.7);
+        color: rgba(255, 255, 255, 0.85);
+        transition: all 0.3s ease;
+    }
+
+    .custom-navbar .btn-outline-light:hover {
+        background-color: #ffc107; /* Fondo amarillo al pasar el ratón */
+        color: #343a40; /* Texto oscuro */
+        border-color: #ffc107;
+    }
+
+    /* Estilo para el ícono del logo */
+    .custom-navbar .navbar-brand i {
+        font-size: 1.5em; /* Tamaño del icono del globo */
+    }
+    .custom-navbar .navbar-brand span {
+        font-weight: normal; /* Para que 'DB' no sea tan negrita como 'World' */
+    }
+
+    /* Ajuste para el toggler si es necesario */
+    .custom-navbar .navbar-toggler {
+        border-color: rgba(255, 255, 255, 0.3);
+    }
+    .custom-navbar .navbar-toggler-icon {
+        filter: brightness(2); /* Hace el ícono del toggler más visible en fondo oscuro */
+    }
+
+    .app-footer {
+    background-color: #1b4166; /* Fondo oscuro */
+    color: #ffffff; /* Texto blanco */
+    padding: 10px 15px; /* Padding vertical y horizontal ajustado */
+    text-align: center;
+    font-size: 0.85em; /* Tamaño de fuente más pequeño */
+    display: flex; /* Usamos Flexbox para alinear elementos */
+    justify-content: center; /* Centrar horizontalmente */
+    align-items: center; /* Centrar verticalmente */
+    flex-wrap: wrap; /* Permite que los elementos se envuelvan en pantallas pequeñas */
+    gap: 15px; /* Espacio entre los elementos del footer */
+    border-top: 1px solid #495057; /* Borde superior sutil */
+}
+
+.app-footer a {
+    color: #adb5bd; /* Color de enlace ligeramente más claro para contraste */
+    text-decoration: none; /* Sin subrayado */
+    transition: color 0.3s ease; /* Transición suave al pasar el ratón */
+}
+
+.app-footer a:hover {
+    color: #ffffff; /* Color de enlace al pasar el ratón */
+}
+
+.app-footer .separator {
+    color: #adb5bd; /* Color del separador */
+    margin: 0 5px; /* Margen para separar el símbolo */
+}
+
+/* Estilos para iconos de redes sociales (si decides incluirlos) */
+.app-footer .social-icons a {
+    font-size: 1.1em; /* Tamaño de los iconos */
+    margin: 0 8px; /* Espacio entre iconos */
+}
