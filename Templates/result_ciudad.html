@@ -13,6 +13,12 @@
             <span class="brand">WorldDB</span>
         </a>
     </header>
+    <div class="stars"></div>
+    <div class="shooting-star"></div>
+    <div class="shooting-star"></div>
+    <div class="shooting-star"></div>
+    <div class="shooting-star"></div>
+    <div class="shooting-star"></div>
     <h1 class="result-title">Resultados para "{{ ciudad }}"</h1>
     {% if resultados %}
         <div class="table-container">
@@ -37,5 +43,17 @@
         <p>No se encontraron ciudades que coincidan.</p>
     {% endif %}
     <p><a href="/" class="back-link">Volver a buscar</a></p>
+    <footer class="footer">
+        <p>&copy; 2025 WorldDB | Made By Sebastian Echeverry</p>
+    </footer>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chartjs-plugin-datalabels"></script>
+    <script>
+        // Aquí puedes agregar cualquier script adicional si es necesario
+        // Por ejemplo, para manejar gráficos o interactividad
+        document.addEventListener('DOMContentLoaded', function() {
+            // Código para inicializar gráficos o interactividad
+        });
+    </script>
 </body>
 </html>
