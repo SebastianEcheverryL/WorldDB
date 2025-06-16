@@ -1,0 +1,46 @@
+{% extends "base.html" %}
+
+{% block title %}Ciudades | WorldDB{% endblock %}
+
+{% block content %}
+<div class="container">
+  <h2 class="mb-4">Listado de Ciudades</h2>
+  <input type="text" id="filtro" class="form-control mb-3" placeholder="Filtrar por ciudad, país o distrito...">
+
+  <div class="table-responsive">
+    <table class="table table-striped table-bordered" id="tabla-ciudades">
+      <thead>
+        <tr>
+          <th>ID</th>
+          <th>Nombre</th>
+          <th>Código País</th>
+          <th>Distrito</th>
+          <th>Población</th>
+        </tr>
+      </thead>
+      <tbody>
+        {% for ciudad in ciudades %}
+        <tr>
+          <td>{{ ciudad.ID }}</td>
+          <td>{{ ciudad.Name }}</td>
+          <td>{{ ciudad.CountryCode }}</td>
+          <td>{{ ciudad.District or "N/A" }}</td>
+          <td>{{ "{:,}".format(ciudad.Population) if ciudad.Population is not none else "N/A" }}</td>
+        </tr>
+        {% endfor %}
+      </tbody>
+    </table>
+  </div>
+</div>
+
+<script>
+document.getElementById('filtro').addEventListener('keyup', function() {
+  let filtro = this.value.toLowerCase();
+  let filas = document.querySelectorAll('#tabla-ciudades tbody tr');
+  filas.forEach(function(fila) {
+    let texto = fila.textContent.toLowerCase();
+    fila.style.display = texto.includes(filtro) ? '' : 'none';
+  });
+});
+</script>
+{% endblock %}

@@ -3,6 +3,7 @@ from fastapi import FastAPI, Request, Form, Query
 from fastapi.responses import HTMLResponse
 from fastapi.templating import Jinja2Templates
 from db import connect_db as get_connection
+from db import obtener_paises, obtener_ciudades
 from fastapi.staticfiles import StaticFiles
 
 app = FastAPI()
@@ -99,4 +100,18 @@ def buscar_ciudad(request: Request, ciudad: str = Form(...)):
     except Exception as e:
         return templates.TemplateResponse("error.html", {"request": request, "error": str(e)})
 
+@app.get("/paises", response_class=HTMLResponse)
+async def listar_paises(request: Request):
+    try:
+        paises = obtener_paises()
+        return templates.TemplateResponse("paises.html", {"request": request, "paises": paises})
+    except Exception as e:
+        return templates.TemplateResponse("error.html", {"request": request, "error": str(e)})
 
+@app.get("/ciudades", response_class=HTMLResponse)
+async def listar_ciudades(request: Request):
+    try:
+        ciudades = obtener_ciudades()
+        return templates.TemplateResponse("ciudades.html", {"request": request, "ciudades": ciudades})
+    except Exception as e:
+        return templates.TemplateResponse("error.html", {"request": request, "error": str(e)})
