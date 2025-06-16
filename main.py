@@ -157,3 +157,11 @@ async def enviar_contacto(
         "contact.html",
         {"request": request, "mensaje_exito": mensaje_exito}
     )
+
+if  __name__ == "__main__":
+    import uvicorn
+    uvicorn.run(app, host="0.0.0", port=8000, log_level="info")
+    # To run the application, use the command:
+    # uvicorn main:app --reload
+    # This will start the FastAPI application on http://localhost:8000
+    # You can access the application in your web browser.
