@@ -7,3 +7,4 @@ venv/
 *.log
 # Ignore database files
 # Ignore virtual environment
+static/background.mp4
