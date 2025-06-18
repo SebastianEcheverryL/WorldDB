@@ -158,9 +158,12 @@ async def enviar_contacto(
         {"request": request, "mensaje_exito": mensaje_exito}
     )
 
-if  __name__ == "__main__":
+if __name__ == "__main__":
     import uvicorn
-    uvicorn.run(app, host="0.0.0", port=8000, log_level="info")
+    import os
+    port = int(os.environ.get("PORT", 8000))  # Usar el puerto que Render asigna
+    uvicorn.run(app, host="0.0.0.0", port=port, log_level="info")
+
     # To run the application, use the command:
     # uvicorn main:app --reload
     # This will start the FastAPI application on http://localhost:8000
