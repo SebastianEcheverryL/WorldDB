@@ -2,9 +2,9 @@ import mysql.connector
 
 def connect_db():
     return mysql.connector.connect(
-        host="localhost",
-        user="root",
-        password="root",
+        host="worlddb.cjwu6cgm66rf.us-east-2.rds.amazonaws.com",
+        user="admin",
+        password="miprimerapp",
         database="world",
         port=3306,
     )
