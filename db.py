@@ -5,7 +5,7 @@ def connect_db():
         host="worlddb.cjwu6cgm66rf.us-east-2.rds.amazonaws.com",
         user="admin",
         password="miprimerapp",
-        database="world",
+        database="WorldDB",
         port=3306,
     )
 
@@ -17,7 +17,7 @@ def obtener_paises():
         print("Error al conectar a la base de datos")
         return []
     cursor = conn.cursor(dictionary=True)
-    cursor.execute("SELECT * FROM world.country")
+    cursor.execute("SELECT * FROM WorldDB.country")
     paises = cursor.fetchall()
     cursor.close()
     conn.close()
