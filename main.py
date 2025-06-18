@@ -9,7 +9,7 @@ import smtplib
 from email.message import EmailMessage
 
 app = FastAPI()
-templates = Jinja2Templates(directory="templates")
+templates = Jinja2Templates(directory="Templates")
 app.mount("/static", StaticFiles(directory="static"), name="static")
 
 EMAIL_ORIGEN = "secheverrylemos@gmail.com"
