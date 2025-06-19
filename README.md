@@ -38,11 +38,6 @@
 
 ---
 
-## 📸 Capturas (opcional)
-
-_Puedes incluir aquí imágenes del funcionamiento de la app, búsquedas o resultados de comparación._
-
----
 
 ## 🧑‍💻 Autor
 
